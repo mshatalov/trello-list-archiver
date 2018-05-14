@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://p.trellocdn.com/power-up.min.css">
+    <link rel="stylesheet" href="./css/archive.css">
+    <script src="https://p.trellocdn.com/power-up.min.js"></script>
+  </head>
+  <body>
+    <div id="content">
+      <form id="search">
+        <label for="listName">List name pattern:</label>
+        <input name="name" type="text" id="listName" autofocus />
+        <button type="submit" class="mod-primary">Search</button>
+      </form>
+      <form id="archive" hidden>
+        <div id="archivalList">
+        </div>
+        <button type="submit" class="mod-danger" id="archiveSubmit">Archive Selected</button>        
+      </form>
+      <div id="notFound" hidden>
+        Oops, nothing matched. All archived?
+      </div>
+    </div>
+    <script src="./js/archive.js"></script>
+  </body>
+</html>

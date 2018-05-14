@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://p.trellocdn.com/power-up.min.css">
+    <script src="https://p.trellocdn.com/power-up.min.js"></script>
+  </head>
+  <body>
+    <p>
+      First you need to authorize us to access your Trello account to be able to archive lists
+    </p>
+    <button type="submit" class="mod-primary" id="authorizeButton">Authorize Access To Trello</button>
+    
+    <script>
+      var Promise = TrelloPowerUp.Promise;
+      var t = TrelloPowerUp.iframe();
+
+      var apiKey = t.arg("apiKey");
+      var trelloAuthUrl = `https://trello.com/1/authorize?expiration=never&name=Done%20Archiver&scope=read,write&key=${apiKey}&callback_method=postMessage&return_url=${window.location.origin}%2Fauth-success.html`;
+      
+      document.getElementById("authorizeButton").addEventListener("click", () => {
+        t.authorize(trelloAuthUrl, {
+          height: 680,
+          width: 580,
+          windowCallback: (w) => {
+            let listener = (event) => {
+              if (event && event.source == w) {
+                if (event.data && /^[0-9a-f]{64}$/.test(event.data)) {
+                  w.close();
+                  window.authorize(event.data);
+                }
+                window.removeEventListener("message", listener);
+              }
+            };
+            window.addEventListener("message",  listener);
+          }
+        })
+        .then((token) => t.set("member", "private", "token", token))
+        .then(() => t.closePopup());
+      });
+    </script>
+  </body>
+</html>

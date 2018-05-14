@@ -1,0 +1,26 @@
+{
+  "name": "list-archiver",
+  "version": "0.0.1",
+  "description": "A Trello Power-Up providing a quick way to archive multiple lists in a few clicks",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.15.2",
+    "cors": "^2.8.3"
+  },
+  "engines": {
+    "node": "6.10.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/list-archiver"
+  },
+  "license": "MIT",
+  "keywords": [
+    "trello",
+    "power-up",
+    "list",
+    "archive"
+  ]
+}
