@@ -12,7 +12,7 @@ Once you have a team, install Power-Up via https://trello.com/power-ups/admin/ p
 ### Pre-requisite: create a team
 1. Navigate to Trello Home via https://trello.com/
 2. Create a team by clicking a plus icon on the left sidebar
-3. Open the board(s) where you want to add trello-list-archiver and assign them to the newly created team by clicking on _Personal_ next to the board title.
+3. Open the board(s) where you want to add trello-list-archiver and assign them to the newly created team by clicking on _Personal_ next to the board title
 
 ### Add trello-list-archiver to the team
 1. Navigate to https://trello.com/power-ups/admin/
@@ -35,12 +35,11 @@ Once you have a team, install Power-Up via https://trello.com/power-ups/admin/ p
 8. Click _Enable_ next to _list-archiver_ Power-Up
 
 ## Usage
-**trello-list-archiver** shows up in the top bar as *Archive Lists* button.
+**trello-list-archiver** shows up in the top bar as *Archive Lists* button. On the very first use, it'll prompt you to authorize the Power-Up to access your Trello account — it's required to modify lists via Trello API.
 
-1. On the very first use, it'll prompt you to authorize the Power-Up to access your Trello account -- it's required to modify lists via Trello API.
-2. Once authenticated, put a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) in a search box and press Enter or click _Search_
-3. Uncheck any matched list if necessary, and click _Archive Selected_
-4. Voila! If you removed something accidentally, there is still a chance to click _Undo Selected_
+Once authenticated, put a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) in the search box and press Enter or click _Search_. Uncheck any matched lists if necessary, and click _Archive Selected_.
+
+Voila! If you removed something important accidentally, there is still a chance to fix it by clicking _Undo Selected_.
 
 Enjoy!
 
