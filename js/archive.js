@@ -1,4 +1,9 @@
-const t = TrelloPowerUp.iframe();
+'use strict';
+
+const t = TrelloPowerUp.iframe({
+  appKey: window.appKey,
+  appName: window.appName
+});
 const Promise = TrelloPowerUp.Promise;
 
 const archiveAction = 'Archive Selected';
@@ -10,13 +15,13 @@ function clear () {
   return uiList;
 }
 
-let archiveSelectedLists = function (close) {
+let archiveSelectedLists = function (token, close) {
   let checkboxes = window.archivalList.getElementsByClassName('list-item');
   let requests = [];
   for (let i in checkboxes) {
     if (checkboxes[i].checked) {
       let request = new XMLHttpRequest();
-      request.open('PUT', `https://api.trello.com/1/lists/${checkboxes[i].value}/closed?value=${!!close}&key=${t.arg('apiKey')}&token=${t.arg('token')}`, true);
+      request.open('PUT', `https://api.trello.com/1/lists/${checkboxes[i].value}/closed?value=${!!close}&key=${window.appKey}&token=${token}`, true);
       requests.push(new Promise((resolve, reject) => {
         request.onload = () => request.status === 200 ? resolve() : reject(request.status);
         request.onerror = reject;
@@ -77,16 +82,18 @@ window.search.addEventListener('submit', (event) => {
 // archive/undo action
 window.archive.addEventListener('submit', (event) => {
   event.preventDefault();
-  archiveSubmit.setAttribute('disabled', '');
 
-  Promise.all(archiveSelectedLists(getAction())).then(
-    toggleAction,
-    () => t.popup({
+  archiveSubmit.setAttribute('disabled', '');
+  Promise.resolve()
+    .then(() => t.getRestApi().getToken())
+    .then((token) => Promise.all(archiveSelectedLists(token, getAction())))
+    .catch(() => t.popup({
       title: 'Oops',
       url: './error.html',
       height: 70
-    })
-  ).finally(() => { archiveSubmit.removeAttribute('disabled'); });
+    }))
+    .then(toggleAction)
+    .then(() => archiveSubmit.removeAttribute('disabled'));
 });
 
 t.sizeTo('#content').done();
