@@ -5,12 +5,9 @@
   "main": "server.js",
   "scripts": {
     "lint": "semistandard",
-    "start": "node server.js"
+    "start": "npx serve"
   },
-  "dependencies": {
-    "express": "^4.16.4",
-    "cors": "^2.8.5"
-  },
+  "dependencies": {},
   "engines": {
     "node": "10.14.x"
   },
@@ -28,6 +25,9 @@
     "semistandard": "^13.0.1"
   },
   "semistandard": {
-    "globals": [ "TrelloPowerUp", "XMLHttpRequest" ]
+    "globals": [
+      "TrelloPowerUp",
+      "XMLHttpRequest"
+    ]
   }
 }
