@@ -26,5 +26,8 @@
   ],
   "devDependencies": {
     "semistandard": "^13.0.1"
+  },
+  "semistandard": {
+    "globals": [ "TrelloPowerUp", "XMLHttpRequest" ]
   }
 }

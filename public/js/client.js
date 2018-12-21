@@ -1,4 +1,4 @@
-let Promise = TrelloPowerUp.Promise;
+'use strict';
 
 const WHITE_ROCKET_ICON = 'https://cdn.glitch.com/c69415fd-f70e-4e03-b43b-98b8960cd616%2Fwhite-rocket-ship.png?1495811896182';
 const apiKey = '0eb914269291ac0b20cc7660eb557de8';

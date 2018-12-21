@@ -1,5 +1,5 @@
-let t = TrelloPowerUp.iframe();
-let Promise = TrelloPowerUp.Promise;
+const t = TrelloPowerUp.iframe();
+const Promise = TrelloPowerUp.Promise;
 
 const archiveAction = 'Archive Selected';
 const undoAction = 'Undo Selected';
@@ -18,7 +18,7 @@ let archiveSelectedLists = function (close) {
       let request = new XMLHttpRequest();
       request.open('PUT', `https://api.trello.com/1/lists/${checkboxes[i].value}/closed?value=${!!close}&key=${t.arg('apiKey')}&token=${t.arg('token')}`, true);
       requests.push(new Promise((resolve, reject) => {
-        request.onload = () => request.status === 200 ? resolve() : reject();
+        request.onload = () => request.status === 200 ? resolve() : reject(request.status);
         request.onerror = reject;
         request.send();
       }));
