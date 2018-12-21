@@ -19,7 +19,7 @@ Once you have a team, install Power-Up via https://trello.com/power-ups/admin/ p
 2. Click on the team name
 3. Click _Create a Power-Up_ button
 4. Fill the key values that define trello-list-archiver:
-    * **Iframe connector URL:** https://list-archiver.glitch.me/
+    * **Iframe connector URL:** https://mshatalov.github.io/trello-list-archiver/
     * **Power-Up Capabilities:** authorization-status, board-buttons, callback, show-authorization, show-settings
     * **Power-Up icon URL:** https://cdn.glitch.com/1b42d7fe-bda8-4af8-a6c8-eff0cea9e08a%2Frocket-ship.png?1494946700421
 5. You can put any info in the remaining fields, suggested values are:
@@ -49,7 +49,7 @@ In rare cases when authentication token expires or invalidates, you may need to 
 After that, click the gear button again, select _Authorize Account_, and follow the prompts to authorize 
 
 ## Code
-Feel free to fork **trello-list-archiver** or suggest a pull request. You can also play with and remix the code at https://glitch.com/edit/#!/list-archiver — that's where the Power-Up is hosted now.
+Feel free to fork **trello-list-archiver** or suggest a pull request. The Power-Up was originally hosted at [Glitch](https://glitch.com) which is a nice platform to experiment with the code changes, but has moved to GitHub Pages since then.
 
 ## Acknowledgments
 Made by [Mikhail Shatalov](https://github.com/mshatalov).  
