@@ -12,7 +12,7 @@
     "node": "10.14.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/list-archiver"
+    "url": "https://github.com/mshatalov/trello-list-archiver"
   },
   "license": "MIT",
   "keywords": [
