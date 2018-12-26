@@ -96,4 +96,10 @@ window.archive.addEventListener('submit', (event) => {
     .then(() => archiveSubmit.removeAttribute('disabled'));
 });
 
+window.archive.addEventListener('keydown', (event) => {
+  if (event.keyCode === 27) {
+    t.closePopup();
+  }
+});
+
 t.sizeTo('#content').done();
