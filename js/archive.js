@@ -96,7 +96,7 @@ window.archive.addEventListener('submit', (event) => {
 });
 
 // handle ESC for convenience
-window.archive.addEventListener('keydown', (event) => {
+window.addEventListener('keydown', (event) => {
   if (event.keyCode === 27) {
     t.closePopup();
   }
