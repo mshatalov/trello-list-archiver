@@ -1,18 +1,25 @@
 <html>
   <head>
     <link rel="stylesheet" href="https://p.trellocdn.com/power-up.min.css">
-    <link rel="stylesheet" href="./css/archive.css">
-
+    <style>
+      input[type="checkbox"] { margin-right: 5px; vertical-align: middle; }
+      input[type="text"] { padding: 8px 12px; }
+      input[type="text"].noshadow:focus { box-shadow: none; }
+      label.text { margin-top: 4px; margin-bottom: 8px; }
+      form { margin-bottom: 2px; }
+      .results { margin-top: 16px; margin-bottom: 12px; }
+      button { margin-bottom: 0; }
+    </style>
   </head>
   <body>
     <div id="content">
       <form id="search">
-        <label for="listName">List name pattern:</label>
-        <input name="name" type="text" id="listName" autofocus />
+        <label for="listName" class="text">List name pattern:</label>
+        <input name="name" type="text" id="listName" class="noshadow" autofocus />
         <button type="submit" class="mod-primary">Search</button>
       </form>
       <form id="archive" hidden>
-        <div id="archivalList">
+        <div id="archivalList" class="results">
         </div>
         <button type="submit" class="mod-danger" id="archiveSubmit">Archive Selected</button>        
       </form>

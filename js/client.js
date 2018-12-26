@@ -26,7 +26,7 @@ TrelloPowerUp.initialize({
             return t.popup({
               title: 'Archive Lists',
               url: 'archive.html',
-              height: 134
+              height: 119
             });
           } else {
             return promptAuthorization(t);
