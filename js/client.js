@@ -1,7 +1,5 @@
 'use strict';
 
-const WHITE_ROCKET_ICON = 'https://cdn.glitch.com/c69415fd-f70e-4e03-b43b-98b8960cd616%2Fwhite-rocket-ship.png?1495811896182';
-
 let promptAuthorization = (t) => {
   if (window.appKey) {
     return t.popup({
@@ -17,7 +15,10 @@ let promptAuthorization = (t) => {
 TrelloPowerUp.initialize({
   'board-buttons': (t, options) => {
     return [{
-      icon: WHITE_ROCKET_ICON,
+      icon: {
+        dark: document.getElementById('white-icon').href,
+        light: document.getElementById('black-icon').href
+      },
       text: 'Archive Lists',
       callback: (t) => {
         return t.getRestApi().isAuthorized().then((authorized) => {
