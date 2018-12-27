@@ -46,4 +46,4 @@ Feel free to fork **trello-list-archiver** or suggest a pull request. The Power-
 
 ## Acknowledgments
 Made by [Mikhail Shatalov](https://github.com/mshatalov).  
-Icons made by Freepik and Vectors Market from www.flaticon.com are licensed by CC 3.0 BY.
+Archive icon is based on the original icons from Trello at https://design.trello.com/style/icons.

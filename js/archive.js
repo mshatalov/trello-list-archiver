@@ -9,18 +9,20 @@ const Promise = TrelloPowerUp.Promise;
 const archiveAction = 'Archive Selected';
 const undoAction = 'Undo Selected';
 
-function clear () {
-  let uiList = window.archivalList;
+const submitButton = window.archiveSubmit;
+
+const clear = function () {
+  const uiList = window.archivalList;
   uiList.innerHTML = '';
   return uiList;
-}
+};
 
-let archiveSelectedLists = function (token, close) {
-  let checkboxes = window.archivalList.getElementsByClassName('list-item');
-  let requests = [];
-  for (let i in checkboxes) {
+const archiveSelectedLists = function (token, close) {
+  const checkboxes = window.archivalList.getElementsByClassName('list-item');
+  const requests = [];
+  for (const i in checkboxes) {
     if (checkboxes[i].checked) {
-      let request = new XMLHttpRequest();
+      const request = new XMLHttpRequest();
       request.open('PUT', `https://api.trello.com/1/lists/${checkboxes[i].value}/closed?value=${!!close}&key=${window.appKey}&token=${token}`, true);
       requests.push(new Promise((resolve, reject) => {
         request.onload = () => request.status === 200 ? resolve() : reject(request.status);
@@ -32,39 +34,36 @@ let archiveSelectedLists = function (token, close) {
   return requests;
 };
 
-let archiveSubmit = window.archiveSubmit;
-
-let showList = function () {
-  archiveSubmit.innerHTML = archiveAction;
+const showList = function () {
+  submitButton.innerHTML = archiveAction;
   window.notFound.setAttribute('hidden', '');
   window.archive.removeAttribute('hidden');
 };
 
-let showNotFound = function () {
+const showNotFound = function () {
   window.archive.setAttribute('hidden', '');
   window.notFound.removeAttribute('hidden');
 };
 
-let getAction = function () {
-  return archiveSubmit.innerHTML === archiveAction;
+const getAction = function () {
+  return submitButton.innerHTML === archiveAction;
 };
 
-let toggleAction = function () {
-  archiveSubmit.innerHTML = getAction() ? undoAction : archiveAction;
+const toggleAction = function () {
+  submitButton.innerHTML = getAction() ? undoAction : archiveAction;
 };
 
 // search action
 window.search.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  let q = window.search.listName.value.trim();
+  const q = window.search.listName.value.trim();
   return t.lists('all')
     .then((lists) => {
-      let uiList = clear();
-
-      let re = new RegExp(q);
+      const uiList = clear();
+      const re = new RegExp(q);
       let found = false;
-      for (let l in lists) {
+      for (const l in lists) {
         if (re.test(lists[l].name)) {
           uiList.insertAdjacentHTML(
             'beforeend',
@@ -83,7 +82,7 @@ window.search.addEventListener('submit', (event) => {
 window.archive.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  archiveSubmit.setAttribute('disabled', '');
+  submitButton.setAttribute('disabled', '');
   Promise.resolve()
     .then(() => t.getRestApi().getToken())
     .then((token) => Promise.all(archiveSelectedLists(token, getAction())))
@@ -93,7 +92,14 @@ window.archive.addEventListener('submit', (event) => {
       height: 70
     }))
     .then(toggleAction)
-    .then(() => archiveSubmit.removeAttribute('disabled'));
+    .then(() => submitButton.removeAttribute('disabled'));
+});
+
+// handle ESC for convenience
+window.addEventListener('keydown', (event) => {
+  if (event.keyCode === 27) {
+    t.closePopup();
+  }
 });
 
 t.sizeTo('#content').done();
