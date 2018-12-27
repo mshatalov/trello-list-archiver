@@ -10,6 +10,7 @@ One of the scenarios when it may come handy (that inspired the creation of trell
 To install custom Trello Power-Up, you have to be an admin of a team. You can either create a new or use an existing team.
 Once you have a team, install Power-Up via https://trello.com/power-ups/admin/ page. See also an official guide about [Managing Power-Ups](https://developers.trello.com/v1.0/docs/managing-power-ups) for additional details.
 ### Pre-requisite: create a team
+You can skip this step if you already use teams.
 1. Navigate to Trello Home via https://trello.com/
 2. Create a team by clicking a plus icon on the left sidebar
 3. Open the board(s) where you want to add trello-list-archiver and assign them to the newly created team by clicking on _Personal_ next to the board title
@@ -36,13 +37,16 @@ Voila! If you removed something important accidentally, there is still a chance 
 
 Enjoy!
 
+## Security
+The Power-Up never stores user data or any data at all. The authentication token is securely stored within Trello itself (see https://developers.trello.com/v1.0/reference#client-authorize for technical details) and can only be accessed when you're logged in. 
+
 ## Troubleshooting
 In rare cases when authentication token expires or invalidates, you may need to reauthenticate the Power-Up by navigating to *Show Menu - Power-Ups - Custom*, clicking a gear icon next to the trello-list-archiver and choosing _Remove Personal Settings_.
 
 After that, click the gear button again, select _Authorize Account_, and follow the prompts to authorize 
 
 ## Code
-Feel free to fork **trello-list-archiver** or suggest a pull request. The Power-Up was originally hosted at [Glitch](https://glitch.com) which is a nice platform to experiment with the code, but has moved to GitHub Pages since then.
+Feel free to fork **trello-list-archiver** or suggest a pull request. The Power-Up was originally hosted at [Glitch](https://glitch.com) which is a nice platform to experiment with the code but has moved to GitHub Pages since then.
 
 ## Acknowledgments
 Made by [Mikhail Shatalov](https://github.com/mshatalov).  
